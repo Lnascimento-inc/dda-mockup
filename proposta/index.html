@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14263c">
+  <meta name="robots" content="noindex, follow">
+  <meta name="description" content="Proposta comercial para o aplicativo e o site do Diário de Obra, com protótipo navegável.">
+  <title>Proposta comercial | Diário de Obra</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    :root{color-scheme:light;--navy:#14263c;--primary:#243d58;--ink:#172533;--muted:#4a5c6d;--line:#d5dce4;--surface:#fff;--bg:#f4f6f8;--green:#1d643b;--outer:#e8edf2;--blue:#245384;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+    *,*::before,*::after{box-sizing:border-box}
+    [hidden]{display:none!important}
+    body,h1,h2,h3,p{margin:0}
+    a{color:var(--blue);text-underline-offset:.2em}
+    button,select{font:inherit}
+    a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible,iframe:focus-visible{outline:3px solid #477eb3;outline-offset:3px}
+    svg{width:1.15rem;height:1.15rem;flex:none;vertical-align:middle}
+    section[id],aside[id]{scroll-margin-top:86px}
+    .wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}
+    .top{position:sticky;top:0;z-index:4;background:#fff;border-bottom:1px solid var(--line)}
+    .top-inner{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:inline-flex;align-items:center;gap:10px;color:var(--navy);font-weight:800;text-decoration:none;white-space:nowrap}
+    .brand-mark{width:34px;height:34px;display:grid;place-items:center;background:var(--navy);border-radius:9px;color:white}
+    .brand-mark svg{width:19px;height:19px}
+    .nav{display:flex;gap:clamp(14px,2.1vw,29px);align-items:center}
+    .nav a{font-size:.87rem;font-weight:650;color:var(--muted);text-decoration:none;white-space:nowrap}
+    .nav a:hover,.nav a:focus-visible{color:var(--navy);text-decoration:underline}
+    .skip{position:absolute;left:16px;top:-100px;z-index:10;padding:10px 14px;background:white}
+    .skip:focus{top:10px}
+    .hero{background:linear-gradient(120deg,#f1f5f8 0%,#e8eef4 60%,#dfe8f2 100%);border-bottom:1px solid var(--line)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(335px,410px);align-items:center;gap:clamp(34px,7vw,98px);padding-block:clamp(38px,6vw,75px)}
+    .eyebrow{font-size:.79rem;font-weight:750;letter-spacing:.055em;color:var(--blue);margin-bottom:12px}
+    h1,h2,h3{color:var(--navy);line-height:1.15}
+    h1{font-size:clamp(3.1rem,6.15vw,5.6rem);letter-spacing:-.069em;font-weight:800}
+    .lead{max-width:53ch;font-size:clamp(1.08rem,1.72vw,1.33rem);color:var(--muted);margin-top:20px}
+    .hero-price{border-top:1px solid #b9c8d7;margin-top:29px;padding-top:20px}
+    .hero-price strong{display:block;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.045em;color:var(--navy);line-height:1.15}
+    .hero-price span{display:block;color:var(--muted);max-width:42ch;margin-top:7px;font-size:.9rem}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .btn{display:inline-flex;gap:7px;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border:1px solid var(--navy);border-radius:9px;color:var(--navy);background:white;text-decoration:none;font-size:.9rem;font-weight:750}
+    .btn:hover{background:#eef3f8}
+    .btn.primary{color:white;background:var(--navy)}
+    .btn.primary:hover{background:var(--primary)}
+    .preview{border:1px solid #c1cddb;background:#fff;border-radius:17px;box-shadow:0 12px 30px #172b3c13;overflow:hidden;min-width:0}
+    .preview-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;background:#fff}
+    .preview-head h2{font-size:.96rem}
+    .preview-head a{font-size:.8rem;font-weight:650;white-space:nowrap}
+    .demo-nav{display:flex;gap:6px;padding:0 14px 11px}
+    .demo-nav button{flex:1;min-height:40px;background:#edf2f7;color:var(--navy);border:1px solid #dbe3eb;border-radius:7px;padding:5px;font-size:.78rem;font-weight:700;cursor:pointer}
+    .demo-nav button[aria-pressed="true"]{border-color:var(--primary);background:var(--primary);color:white}
+    .preview iframe{display:block;width:100%;height:465px;border:0;border-top:1px solid var(--line);background:var(--bg)}
+    .block{padding-block:clamp(35px,6vw,62px);border-bottom:1px solid var(--line)}
+    .block.light{background:white}
+    .block h2{font-size:clamp(1.75rem,3.8vw,2.65rem);letter-spacing:-.045em}
+    .intro{color:var(--muted);margin-top:10px;max-width:77ch}
+    .two,.three,.finance{display:grid;gap:15px;margin-top:24px;align-items:start}
+    .two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .finance{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px}
+    .card{background:white;border:1px solid var(--line);border-radius:13px;padding:clamp(15px,2.6vw,23px);min-width:0;height:100%}
+    .card h3{font-size:1.16rem;margin-bottom:8px}
+    .card p+p{margin-top:9px}
+    .card p,.card li{font-size:.94rem}
+    .card ul{padding-left:1.15rem;margin:8px 0 0}
+    .card li+li{margin-top:7px}
+    .note{color:var(--muted);font-size:.86rem;margin-top:14px;max-width:100ch}
+    .card p.note{font-size:.84rem}
+    .note a{font-weight:650}
+    .totals{background:var(--navy);color:#f2f6fa;border-color:var(--navy)}
+    .totals h3,.totals strong{color:white}
+    .totals p.note{color:#d5e0ec}
+    .totals label{font-size:.88rem;font-weight:650;margin-top:9px;display:block}
+    .totals select{display:block;width:100%;padding:9px 10px;margin:5px 0 14px;color:var(--navy);border-radius:8px;border:1px solid #9ab0c7;background:white}
+    .total{padding-top:12px;border-top:1px solid #52687f}
+    .total strong{display:block;margin-top:3px;font-size:clamp(1.22rem,2.4vw,1.66rem);line-height:1.22;letter-spacing:-.03em}
+    .costs{width:100%;border-collapse:collapse;font-size:.88rem}
+    .costs th,.costs td{padding:8px 0;vertical-align:top;border-bottom:1px solid #e2e7ec;text-align:left}
+    .costs th{font-weight:600;padding-right:12px}
+    .costs td{color:var(--navy);font-weight:750;white-space:nowrap}
+    details{margin-top:16px}
+    summary{cursor:pointer;font-weight:700;color:var(--blue)}
+    .domain-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;margin:10px 0 0;font-size:.84rem}
+    .domain-grid div{display:flex;justify-content:space-between;gap:7px}
+    .domain-grid dd{margin:0;font-weight:650;white-space:nowrap}
+    .milestone{font-size:1.38rem!important;color:var(--navy);font-weight:800;margin-bottom:7px}
+    .sla{margin-top:18px;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:white}
+    .sla table{width:100%;border-collapse:collapse}
+    .sla th,.sla td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.89rem}
+    .sla thead{background:var(--navy);color:#fff}
+    .sla tbody tr:nth-child(2){background:#f1f5f9}
+    .sla tbody tr:last-child>*{border-bottom:0}
+    .sla tbody th{min-width:10ch;color:var(--navy)}
+    .sla td span{display:block;color:var(--muted);font-size:.82rem}
+    .terms{margin-top:15px}
+    .foot{color:var(--muted);font-size:.85rem;padding-block:22px 26px}
+    .foot .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+    @media(max-width:860px){.hero-grid{gap:26px;grid-template-columns:minmax(0,1fr) minmax(310px,365px)}}
+    @media(max-width:690px){
+      .wrap{width:calc(100% - 32px)}
+      .top-inner{min-height:0;flex-wrap:wrap;gap:0;padding-top:8px}
+      .nav{gap:15px;width:100%;min-height:43px}
+      .nav a{font-size:.79rem}
+      section[id],aside[id]{scroll-margin-top:103px}
+      .hero-grid,.two,.three,.finance{grid-template-columns:minmax(0,1fr)}
+      .hero-grid{padding-block:30px 35px}
+      .preview{max-width:460px;width:100%;margin-inline:auto}
+      .preview iframe{height:490px}
+      .sla th,.sla td{font-size:.77rem;padding:9px 7px}
+      .sla td span{font-size:.74rem}
+    }
+    @media(max-width:365px){.nav{gap:10px}.nav a{font-size:.73rem}.costs td{white-space:normal}.sla th,.sla td{overflow-wrap:anywhere}}
+    @media print{
+      :root,.hero,.block{background:white;color:black}.wrap{width:100%}
+      .top,.preview,.actions,.totals label,.totals select{display:none}
+      .hero-grid,.two,.three,.finance{display:block;padding:0}
+      .block{padding:16px 0}.card{margin:8px 0;break-inside:avoid}
+      .totals,.totals h3,.totals strong,.totals p.note{background:#fff;color:#14263c}
+      h1{font-size:34pt}.hero-price{margin-top:14px}.foot{padding-block:8px}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M6 21V7l6-4 6 4v14M9 11h6M9 15h6M9 18h6"/></svg></span>Diário de Obra
+      </a>
+      <nav class="nav" aria-label="Seções da proposta">
+        <a href="#escopo">Escopo</a>
+        <a href="#investimento">Investimento</a>
+        <a href="#prazos">Prazos</a>
+        <a href="#atendimento">Atendimento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Proposta comercial · Aplicativo e site</p>
+          <h1>Diário<br>de Obra</h1>
+          <p class="lead">A equipe registra o dia no celular. No site, os responsáveis acompanham as obras, revisam os diários e mantêm os cadastros.</p>
+          <p class="hero-price"><strong>R$ 20.000,00</strong><span>Desenvolvimento, configuração inicial e preparação para publicação. Serviços de terceiros pagos pelo cliente.</span></p>
+          <div class="actions">
+            <a class="btn primary" href="#prototipo">Testar protótipo</a>
+            <a class="btn" href="#investimento">Ver custos</a>
+          </div>
+        </div>
+        <aside id="prototipo" class="preview" aria-labelledby="titulo-demo">
+          <div class="preview-head">
+            <h2 id="titulo-demo">Protótipo navegável</h2>
+            <a href="../" target="_blank" rel="noopener">Abrir em tela inteira ↗</a>
+          </div>
+          <div class="demo-nav" aria-label="Atalhos do protótipo" hidden>
+            <button type="button" data-demo="editor" aria-pressed="true">Registrar</button>
+            <button type="button" data-demo="visualizar" aria-pressed="false">Revisar</button>
+            <button type="button" data-demo="envios" aria-pressed="false">Ver envios</button>
+          </div>
+          <iframe id="demo-app" src="../?demo=editor#editor" title="Protótipo interativo do aplicativo Diário de Obra"></iframe>
+        </aside>
+      </div>
+    </div>
+
+    <section id="escopo" class="block light">
+      <div class="wrap">
+        <h2>O que será desenvolvido</h2>
+        <p class="intro">O app e o painel compartilham os mesmos dados e permissões. As 16 telas do protótipo são a referência visual para o app em Android e iPhone.</p>
+        <div class="two">
+          <article class="card">
+            <h3>Aplicativo para a equipe de campo</h3>
+            <ul>
+              <li>Selecionar a obra e preencher o diário com atividades, ocorrências, fotos, equipe, equipamentos, materiais, jornada e clima.</li>
+              <li>Depois do primeiro acesso com internet, salvar o rascunho e as fotos no aparelho. Retomar o envio quando a conexão voltar.</li>
+              <li>Consultar o histórico, aprovar ou devolver o diário, assinar na tela opcionalmente e compartilhar o PDF padronizado.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Site e painel de gestão</h3>
+            <ul>
+              <li>Página pública responsiva de apresentação, com acesso ao painel, contato de suporte e link de privacidade.</li>
+              <li>Painel com login para cadastrar obras, gerenciar usuários, permissões e catálogos, consultar e revisar diários e acessar PDFs.</li>
+            </ul>
+          </article>
+        </div>
+        <p class="note"><strong>Integração.</strong> O valor prevê o uso do backend existente, com acesso autorizado. Se faltar um recurso essencial na API, o ajuste recebe orçamento e aprovação antes de ser executado.</p>
+      </div>
+    </section>
+
+    <section id="investimento" class="block">
+      <div class="wrap">
+        <h2>Investimento e custos externos</h2>
+        <p class="intro">As contas ficam no nome do cliente. Os fornecedores cobram nas moedas indicadas. Tributos e tarifas do meio de pagamento podem alterar o débito.</p>
+        <div class="finance">
+          <div class="card">
+            <h3>Serviços para lançamento</h3>
+            <table class="costs" aria-label="Custos de fornecedores">
+              <tbody>
+                <tr><th scope="row">DigitalOcean Droplet de 2 GB</th><td>US$ 12,00/mês</td></tr>
+                <tr><th scope="row">Backup semanal do Droplet</th><td>US$ 2,40/mês</td></tr>
+                <tr><th scope="row">Fotos no Cloudflare R2 Standard</th><td>US$ 0,00 na franquia</td></tr>
+                <tr><th scope="row">Domínio .com.br no Registro.br</th><td>A partir de R$ 40,00</td></tr>
+                <tr><th scope="row">Apple Developer Program</th><td>US$ 99,00/ano</td></tr>
+                <tr><th scope="row">Google Play Console</th><td>US$ 25,00 uma vez</td></tr>
+              </tbody>
+            </table>
+            <p class="note">O R2 Standard inclui 10 GB-mês de armazenamento, 1 milhão de operações Classe A e 10 milhões de Classe B por mês. O armazenamento excedente custa US$ 0,015 por GB-mês, com cobrança separada por operações excedentes.</p>
+            <p class="note">A Apple pode exibir o preço em moeda local na inscrição.</p>
+          </div>
+          <div class="card totals">
+            <h3>Projeção para contratar</h3>
+            <label for="dominio">Período do domínio</label>
+            <select id="dominio">
+              <option value="40">Anual · 1 ano · R$ 40,00</option>
+              <option value="76">Bienal · 2 anos · R$ 76,00</option>
+              <option value="112">Trienal · 3 anos · R$ 112,00</option>
+              <option value="148">4 anos · R$ 148,00</option>
+              <option value="184">5 anos · R$ 184,00</option>
+              <option value="220">6 anos · R$ 220,00</option>
+              <option value="256">7 anos · R$ 256,00</option>
+              <option value="292">8 anos · R$ 292,00</option>
+              <option value="328">9 anos · R$ 328,00</option>
+              <option value="364">10 anos · R$ 364,00</option>
+            </select>
+            <p class="total">Primeiro ano com desenvolvimento <strong aria-live="polite"><span id="total-brl">R$ 20.040,00</span> + US$ 296,80</strong></p>
+            <p class="note">Inclui o período escolhido do domínio pago de uma vez, 12 meses de servidor e backup e as duas contas de publicação.</p>
+            <p class="total">A partir do segundo ano <strong>US$ 271,80/ano</strong></p>
+            <p class="note" id="domain-renewal">Considere também a renovação do domínio ao fim do primeiro ano, pelo preço vigente.</p>
+          </div>
+        </div>
+        <details>
+          <summary>Ver todos os valores do domínio</summary>
+          <dl class="domain-grid">
+            <div><dt>1 ano</dt><dd>R$ 40,00</dd></div><div><dt>2 anos</dt><dd>R$ 76,00</dd></div>
+            <div><dt>3 anos</dt><dd>R$ 112,00</dd></div><div><dt>4 anos</dt><dd>R$ 148,00</dd></div>
+            <div><dt>5 anos</dt><dd>R$ 184,00</dd></div><div><dt>6 anos</dt><dd>R$ 220,00</dd></div>
+            <div><dt>7 anos</dt><dd>R$ 256,00</dd></div><div><dt>8 anos</dt><dd>R$ 292,00</dd></div>
+            <div><dt>9 anos</dt><dd>R$ 328,00</dd></div><div><dt>10 anos</dt><dd>R$ 364,00</dd></div>
+          </dl>
+        </details>
+        <p class="note">HTTPS e e-mails de recuperação de senha podem começar sem mensalidade. Caixa de e-mail corporativa, servidor maior, banco gerenciado, migração de dados e manutenção contínua são cotados conforme a necessidade.</p>
+        <p class="note">Fontes consultadas em novembro de 2026. <a href="https://www.digitalocean.com/pricing/droplets">Droplets</a> · <a href="https://docs.digitalocean.com/products/backups/details/pricing/">Backups</a> · <a href="https://developers.cloudflare.com/r2/pricing/">Cloudflare R2</a> · <a href="https://registro.br/ajuda/pagamento-de-dominio/">Registro.br</a> · <a href="https://developer.apple.com/br/help/account/membership/program-enrollment/">Apple</a> · <a href="https://support.google.com/googleplay/android-developer/answer/6112435?hl=pt-BR">Google Play</a></p>
+      </div>
+    </section>
+
+    <section id="prazos" class="block light">
+      <div class="wrap">
+        <h2>Prazos e pagamento</h2>
+        <p class="intro">O início ocorre em até <strong>2 dias úteis</strong> após a confirmação da primeira parcela e a liberação dos acessos. A estimativa de desenvolvimento é de <strong>4 a 6 semanas</strong> após a validação da API.</p>
+        <div class="three">
+          <article class="card"><h3>Início</h3><p class="milestone">30% · R$ 6.000</p><p>Com o aceite do escopo, a primeira parcela libera o início do projeto e a validação da integração.</p></article>
+          <article class="card"><h3>Homologação</h3><p class="milestone">40% · R$ 8.000</p><p>O cliente testa os fluxos principais do app e do site. Inclui uma rodada consolidada de ajustes de texto e interface no escopo aprovado.</p></article>
+          <article class="card"><h3>Entrega</h3><p class="milestone">30% · R$ 6.000</p><p>Aceite da versão final, site no ar, código-fonte e instruções de operação. Os apps são submetidos quando as contas das lojas estiverem liberadas.</p></article>
+        </div>
+        <p class="note"><strong>Publicação.</strong> A entrega inclui configuração inicial do servidor, domínio, HTTPS e backup, preparação das versões, capturas, textos e acompanhamento da submissão. O cliente fornece os acessos, a marca e o conteúdo e valida o texto de privacidade. O tempo de análise das lojas é adicional. Contas pessoais novas no Google Play podem precisar de teste fechado com pelo menos 12 participantes por 14 dias consecutivos. <a href="https://support.google.com/googleplay/android-developer/answer/14151465">Regra de testes</a></p>
+      </div>
+    </section>
+
+    <section id="atendimento" class="block">
+      <div class="wrap">
+        <h2>Atendimento e SLA</h2>
+        <p class="intro">Os prazos abaixo valem durante o projeto, a partir do início contratado, e durante os <strong>30 dias corridos de correções</strong> após cada entrega entrar em produção. Os chamados são registrados no e-mail de atendimento informado no início.</p>
+        <p class="note"><strong>Horário.</strong> De segunda a sexta, das 9h às 18h, no horário de Brasília, exceto feriados. Chamados fora desse período começam a contar no próximo dia útil.</p>
+        <div class="sla">
+          <table aria-label="Prazos de atendimento por prioridade">
+            <thead><tr><th scope="col">Prioridade</th><th scope="col">Primeiro retorno</th><th scope="col">Meta de contorno ou correção</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Crítica</th><td>Até 4 horas úteis</td><td>Até 1 dia útil <span>App, site ou fluxo principal indisponível sem alternativa.</span></td></tr>
+              <tr><th scope="row">Alta</th><td>Até 1 dia útil</td><td>Até 3 dias úteis <span>Função importante prejudicada, com alternativa temporária.</span></td></tr>
+              <tr><th scope="row">Normal</th><td>Até 2 dias úteis</td><td>Até 5 dias úteis <span>Falha pontual sem bloqueio do uso principal.</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note terms">O primeiro retorno confirma a prioridade e o próximo passo. A meta de contorno ou correção conta da abertura do chamado em horário útil. Na espera por acesso, informação do cliente ou ação de terceiro indispensável para resolver o chamado, a contagem dessa meta pausa e o novo prazo é comunicado.</p>
+        <p class="note">Após os 30 dias, suporte recorrente e manutenção podem ser contratados separadamente. O atendimento desse plano começa após a contratação e o primeiro pagamento, conforme os prazos definidos na contratação. Novas funcionalidades recebem orçamento próprio.</p>
+        <p class="note"><strong>Aceite.</strong> Confirme por escrito o escopo, o valor e as condições de início. Prazo, parcelas e condições de atendimento podem ser ajustados em comum acordo antes do início.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="foot"><div class="wrap"><span>Leandro Nascimento · Proposta comercial do Diário de Obra</span><a href="#conteudo">Voltar ao início ↑</a></div></footer>
+  <script>
+    const domain = document.getElementById('dominio');
+    const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    function showDomainCost() {
+      const years = domain.selectedIndex + 1;
+      document.getElementById('total-brl').textContent = currency.format(20000 + Number(domain.value));
+      document.getElementById('domain-renewal').textContent = years === 1
+        ? 'Considere também a renovação do domínio ao fim do primeiro ano, pelo preço vigente.'
+        : 'O domínio está pré-pago por ' + years + ' anos. Renove ao fim do período pelo preço vigente.';
+    }
+
+    domain.addEventListener('change', showDomainCost);
+    showDomainCost();
+
+    const preview = document.getElementById('demo-app');
+    const demoNav = document.querySelector('.demo-nav');
+    demoNav.hidden = false;
+    demoNav.addEventListener('click', event => {
+      const button = event.target.closest('button[data-demo]');
+      if (!button) return;
+      const route = button.dataset.demo;
+      for (const choice of demoNav.querySelectorAll('button')) {
+        choice.setAttribute('aria-pressed', String(choice === button));
+      }
+      preview.src = '../?demo=' + route + '#' + route;
+    });
+  </script>
+</body>
+</html>
